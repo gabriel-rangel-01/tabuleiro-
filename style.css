@@ -1,0 +1,241 @@
+/* =========================
+   🌌 FUNDO PRINCIPAL (CONSOLE STYLE)
+========================= */
+body{
+    margin:0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%, #1a1a2e, transparent 40%),
+        radial-gradient(circle at 80% 30%, #16213e, transparent 45%),
+        radial-gradient(circle at 50% 90%, #0f3460, transparent 50%),
+        #0b0f1a;
+
+    color:#fff;
+    overflow:hidden;
+}
+
+/* =========================
+   🎥 CAMERA (viewport do jogo)
+========================= */
+#camera{
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+    position:relative;
+}
+
+/* =========================
+   🌍 MUNDO DO JOGO
+========================= */
+#world{
+    position:absolute;
+    width:2000px;
+    height:1200px;
+
+    transition: transform 0.15s linear;
+}
+
+/* =========================
+   🗺️ NÓS DO MAPA (CASAS)
+========================= */
+.node{
+    width:56px;
+    height:56px;
+
+    border-radius:50%;
+    position:absolute;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:11px;
+    font-weight:bold;
+
+    color:#fff;
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,0.5),
+        inset 0 0 10px rgba(255,255,255,0.08);
+
+    border:2px solid rgba(255,255,255,0.08);
+
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* hover estilo “game UI” */
+.node:hover{
+    transform:scale(1.15);
+    box-shadow:
+        0 15px 30px rgba(0,0,0,0.7),
+        0 0 15px rgba(255,255,255,0.2);
+}
+
+/* =========================
+   🎨 TIPOS DE CASAS
+========================= */
+.start{
+    background: radial-gradient(circle,#3498db,#1b4f72);
+}
+
+.path{
+    background: radial-gradient(circle,#2c3e50,#1a1a2e);
+}
+
+.benefit{
+    background: radial-gradient(circle,#2ecc71,#145a32);
+    box-shadow:0 0 20px rgba(46,204,113,0.4);
+}
+
+.penalty{
+    background: radial-gradient(circle,#e74c3c,#641e16);
+    box-shadow:0 0 20px rgba(231,76,60,0.4);
+}
+
+.event{
+    background: radial-gradient(circle,#9b59b6,#4a235a);
+    box-shadow:0 0 20px rgba(155,89,182,0.4);
+}
+
+.star{
+    background: radial-gradient(circle,#f1c40f,#b7950b);
+    color:#111;
+    box-shadow:0 0 25px rgba(241,196,15,0.6);
+}
+
+/* =========================
+   🧍 JOGADORES (GLASS + GLOW)
+========================= */
+.player{
+    position:absolute;
+    font-size:20px;
+
+    padding:2px 6px;
+
+    border-radius:10px;
+
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(6px);
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,0.6),
+        0 0 10px rgba(255,255,255,0.08);
+
+    transition: transform 0.25s ease, left 0.25s, top 0.25s;
+}
+
+/* hover leve */
+.player:hover{
+    transform:scale(1.1);
+}
+
+/* =========================
+   🎮 HUD / UI LATERAL
+========================= */
+#ui{
+    position:absolute;
+    right:20px;
+    top:20px;
+
+    width:280px;
+
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(18px);
+
+    border-radius:18px;
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.6);
+
+    padding:15px;
+}
+
+/* =========================
+   🎲 DADO (FOCO PRINCIPAL)
+========================= */
+#dice{
+    font-size:38px;
+    text-align:center;
+    margin:10px 0;
+
+    text-shadow:0 0 15px rgba(255,255,255,0.3);
+
+    animation: pulse 1.2s infinite;
+}
+
+/* animação do dado */
+@keyframes pulse{
+    0%{transform:scale(1); opacity:1;}
+    50%{transform:scale(1.1); opacity:0.8;}
+    100%{transform:scale(1); opacity:1;}
+}
+
+/* =========================
+   🔘 BOTÃO PRINCIPAL
+========================= */
+button{
+    width:100%;
+    padding:12px;
+
+    border:none;
+    border-radius:12px;
+
+    background: linear-gradient(135deg,#00c6ff,#0072ff);
+
+    color:white;
+    font-weight:bold;
+    font-size:14px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 10px 25px rgba(0,198,255,0.3);
+
+    transition:0.2s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:
+        0 15px 30px rgba(0,198,255,0.5);
+}
+
+button:active{
+    transform:scale(0.98);
+}
+
+/* =========================
+   📊 INFO / STATUS
+========================= */
+#info{
+    margin-top:12px;
+    font-size:13px;
+    line-height:1.4em;
+    opacity:0.9;
+}
+
+/* =========================
+   📱 RESPONSIVO (MOBILE)
+========================= */
+@media(max-width:900px){
+
+    #ui{
+        width:90vw;
+        right:5vw;
+        top:auto;
+        bottom:20px;
+    }
+
+    .node{
+        width:48px;
+        height:48px;
+    }
+
+    #dice{
+        font-size:32px;
+    }
+}
